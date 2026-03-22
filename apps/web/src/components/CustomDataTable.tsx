@@ -144,7 +144,7 @@ const data: any = [
 ]
 
 
-export default function DataTableDemo() {
+export default function CustomDataTable() {
 const [sorting, setSorting] = React.useState<any>([])
 const [columnFilters, setColumnFilters] = React.useState<any>([])
 const [rowSelection, setRowSelection] = React.useState<any>({})
