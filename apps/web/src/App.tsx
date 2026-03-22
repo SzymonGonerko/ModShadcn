@@ -1,5 +1,5 @@
-import { Button } from "@workspace/ui/components/button"
 import { SimpleTable } from "./components/SimpleTable"
+import DataTableDemo from "@/components/DataTableDemo"
 
 export function App() {
   return (
@@ -16,9 +16,9 @@ export function App() {
         </div>
         <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
           <h2>
-            Komponent <i>Table</i>
+            Komponent <i>Data Table</i>
           </h2>
-          <SimpleTable />
+          <DataTableDemo />
         </div>
       </div>
     </>

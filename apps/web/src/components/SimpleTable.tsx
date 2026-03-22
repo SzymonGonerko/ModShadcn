@@ -45,13 +45,7 @@ const invoices = [
     paymentStatus: "Pending",
     totalAmount: "$200.00",
     paymentMethod: "Bank Transfer",
-  },
-  {
-    invoice: "INV007",
-    paymentStatus: "Unpaid",
-    totalAmount: "$300.00",
-    paymentMethod: "Credit Card",
-  },
+  }
 ]
 
 export const SimpleTable = () => {
@@ -68,7 +62,7 @@ export const SimpleTable = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {invoices.slice(0, 3).map((invoice) => (
+          {invoices.map((invoice) => (
             <TableRow key={invoice.invoice}>
               <TableCell className="font-medium">{invoice.invoice}</TableCell>
               <TableCell>{invoice.paymentStatus}</TableCell>
@@ -82,7 +76,12 @@ export const SimpleTable = () => {
         <TableFooter>
           <TableRow>
             <TableCell colSpan={3}>Total</TableCell>
-            <TableCell className="text-right">$2,500.00</TableCell>
+            <TableCell className="text-right">
+              ${invoices.reduce((sum, invoice) => {
+                const amount = parseFloat(invoice.totalAmount.replace('$', '').replace(',', ''));
+                return sum + amount;
+              }, 0).toFixed(2)}
+            </TableCell>
           </TableRow>
         </TableFooter>
       </Table>
