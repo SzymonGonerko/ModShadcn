@@ -66,7 +66,7 @@ export const columns: ColumnDef<any>[] = [
     cell: ({ row }) => {
       const amount = parseFloat(row.getValue("amount"))
       return (
-        <div className="flex items-center justify-end gap-2">
+        <div className="flex items-center justify-between">
           <span>${amount.toFixed(2)}</span>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -74,7 +74,7 @@ export const columns: ColumnDef<any>[] = [
                 <MoreHorizontal className="h-3 w-3" />
               </Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
+            <DropdownMenuContent align="end" side="bottom">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
@@ -149,6 +149,7 @@ const [sorting, setSorting] = React.useState<any>([])
 const [columnFilters, setColumnFilters] = React.useState<any>([])
 const [rowSelection, setRowSelection] = React.useState<any>({})
 const [columnVisibility, setColumnVisibility] = React.useState<any>({
+  select: true,
   status: true,
   email: true,
   amount: true,
@@ -198,7 +199,7 @@ const [pagination, setPagination] = React.useState<any>({
               <ChevronDown className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" side="top">
+          <DropdownMenuContent align="end" side="bottom">
             <DropdownMenuLabel>Show columns</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem
@@ -208,6 +209,7 @@ const [pagination, setPagination] = React.useState<any>({
                 setColumnVisibility((prev: any) => ({
                   ...prev,
                   status: !prev.status,
+                  select: !prev.status,
                 }))
               }}
               className="justify-between"
